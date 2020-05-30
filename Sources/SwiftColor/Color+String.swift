@@ -10,6 +10,11 @@ public extension Color {
             return
         }
         
+        if let _ = ExtendedKeyword(rawValue: value.lowercased()) {
+            self.alpha = 0.0
+            return
+        }
+        
         var hex = value
         if hex.hasPrefix("#") {
             hex = String(hex.dropFirst())
@@ -31,5 +36,13 @@ public extension Color {
         default:
             break
         }
+    }
+}
+
+private extension Color {
+    enum ExtendedKeyword: String {
+        case none
+        case clear
+        case transparent
     }
 }

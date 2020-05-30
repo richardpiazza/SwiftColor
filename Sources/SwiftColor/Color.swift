@@ -19,6 +19,8 @@ public struct Color {
     @Clamping(0...1)
     public var alpha: Float = 1.0
     
+    public var colorSpace: ColorSpace = .rgba
+    
     /// Default initializer
     ///
     /// All values will maintain there initialization values of **1.0**.
