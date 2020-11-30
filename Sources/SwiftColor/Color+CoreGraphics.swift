@@ -25,18 +25,30 @@ public extension Color {
         }
     }
     
-    @available(macOS 10.15, iOS 13.0, *)
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
+    @available(*, deprecated, renamed: "CGColor.make(_:)")
     var cgColor: CGColor {
-        if red == 0.0, green == 0.0, blue == 0.0, alpha == 0.0 {
-            // Return the CG color equivalent of `UIColor.clear`.
-            return CGColor(genericGrayGamma2_2Gray: 0.0, alpha: 0.0)
-        }
-        
-        return CGColor(srgbRed: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
+        return .make(self)
     }
 }
 
 public extension CGColor {
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
+    static func make(_ color: Color) -> CGColor {
+        if color.red == 0.0, color.green == 0.0, color.blue == 0.0, color.alpha == 0.0 {
+            // Return the CG color equivalent of `UIColor.clear`.
+            return CGColor(genericGrayGamma2_2Gray: 0.0, alpha: 0.0)
+        }
+        
+        return CGColor(
+            srgbRed: CGFloat(color.red),
+            green: CGFloat(color.green),
+            blue: CGFloat(color.blue),
+            alpha: CGFloat(color.alpha)
+        )
+    }
+    
+    @available(*, deprecated, message: "Use Color() initializer.")
     var color: Color {
         return .init(self)
     }
