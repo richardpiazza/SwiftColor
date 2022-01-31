@@ -1,11 +1,11 @@
 import Foundation
 
-public extension Color {
-    init(_ value: String, alpha: Float = 1.0) {
+public extension Pigment {
+    init(_ value: String, alpha: Double = 1.0) {
         if let keyword = Keyword(rawValue: value.lowercased()) {
-            red = keyword.color.red
-            green = keyword.color.green
-            blue = keyword.color.blue
+            red = keyword.pigment.red
+            green = keyword.pigment.green
+            blue = keyword.pigment.blue
             self.alpha = alpha
             return
         }
@@ -39,7 +39,7 @@ public extension Color {
     }
 }
 
-private extension Color {
+private extension Pigment {
     enum ExtendedKeyword: String {
         case none
         case clear

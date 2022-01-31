@@ -9,19 +9,8 @@ import UIKit
 
 final class ColorTests: XCTestCase {
     
-    static var allTests = [
-        ("testDefaultInitializer", testDefaultInitializer),
-        ("testComponentClamping", testComponentClamping),
-        ("testFloatingPointInitializer", testFloatingPointInitializer),
-        ("testIntInitializer", testIntInitializer),
-        ("testHexInitializers", testHexInitializers),
-        ("testStringInitializers", testStringInitializers),
-        ("testAppKitExtensions", testAppKitExtensions),
-        ("testUIKitExtensions", testUIKitExtensions),
-    ]
-    
     func testDefaultInitializer() {
-        let color = Color()
+        let color = Pigment()
         XCTAssertEqual(color.red, 1.0)
         XCTAssertEqual(color.green, 1.0)
         XCTAssertEqual(color.blue, 1.0)
@@ -29,7 +18,7 @@ final class ColorTests: XCTestCase {
     }
     
     func testComponentClamping() {
-        var color = Color()
+        var color = Pigment()
         XCTAssertEqual(color.red, 1.0)
         XCTAssertEqual(color.green, 1.0)
         XCTAssertEqual(color.blue, 1.0)
@@ -64,63 +53,63 @@ final class ColorTests: XCTestCase {
     }
     
     func testFloatingPointInitializer() {
-        var color = Color(red: 1.0)
+        var color = Pigment(red: 1.0)
         XCTAssertEqual(color.red, 1.0)
         XCTAssertEqual(color.green, 0.0)
         XCTAssertEqual(color.blue, 0.0)
         XCTAssertEqual(color.alpha, 1.0)
         
-        color = Color(red: 1.0, green: 0.5)
+        color = Pigment(red: 1.0, green: 0.5)
         XCTAssertEqual(color.red, 1.0)
         XCTAssertEqual(color.green, 0.5)
         XCTAssertEqual(color.blue, 0.0)
         XCTAssertEqual(color.alpha, 1.0)
         
-        color = Color(red: 1.0, green: 0.5, blue: 0.25)
+        color = Pigment(red: 1.0, green: 0.5, blue: 0.25)
         XCTAssertEqual(color.red, 1.0)
         XCTAssertEqual(color.green, 0.5)
         XCTAssertEqual(color.blue, 0.25)
         XCTAssertEqual(color.alpha, 1.0)
         
-        color = Color(red: 1.0, green: 0.5, blue: 0.25, alpha: 0.1)
+        color = Pigment(red: 1.0, green: 0.5, blue: 0.25, alpha: 0.1)
         XCTAssertEqual(color.red, 1.0)
         XCTAssertEqual(color.green, 0.5)
         XCTAssertEqual(color.blue, 0.25)
-        XCTAssertEqual(color.alpha, 0.1)
+        XCTAssertEqual(color.alpha, 0.1, accuracy: 0.001)
         
-        color = Color(0.6, 0.5, 0.4, 0.3)
-        XCTAssertEqual(color.red, 0.6)
+        color = Pigment(0.6, 0.5, 0.4, 0.3)
+        XCTAssertEqual(color.red, 0.6, accuracy: 0.001)
         XCTAssertEqual(color.green, 0.5)
-        XCTAssertEqual(color.blue, 0.4)
-        XCTAssertEqual(color.alpha, 0.3)
+        XCTAssertEqual(color.blue, 0.4, accuracy: 0.001)
+        XCTAssertEqual(color.alpha, 0.3, accuracy: 0.001)
     }
     
     func testIntInitializer() {
-        var color = Color(red: 255)
+        var color = Pigment(red: 255)
         XCTAssertEqual(color.red, 1.0)
         XCTAssertEqual(color.green, 0.0)
         XCTAssertEqual(color.blue, 0.0)
         XCTAssertEqual(color.alpha, 1.0)
         
-        color = Color(red: 255, green: 127)
+        color = Pigment(red: 255, green: 127)
         XCTAssertEqual(color.red, 1.0)
         XCTAssertEqual(color.green, 0.498, accuracy: 0.001)
         XCTAssertEqual(color.blue, 0.0)
         XCTAssertEqual(color.alpha, 1.0)
         
-        color = Color(red: 255, green: 127, blue: 64)
+        color = Pigment(red: 255, green: 127, blue: 64)
         XCTAssertEqual(color.red, 1.0)
         XCTAssertEqual(color.green, 0.498, accuracy: 0.001)
         XCTAssertEqual(color.blue, 0.25, accuracy: 0.001)
         XCTAssertEqual(color.alpha, 1.0)
         
-        color = Color(red: 255, green: 127, blue: 64, alpha: 0.1)
+        color = Pigment(red: 255, green: 127, blue: 64, alpha: 0.1)
         XCTAssertEqual(color.red, 1.0)
         XCTAssertEqual(color.green, 0.498, accuracy: 0.001)
         XCTAssertEqual(color.blue, 0.25, accuracy: 0.001)
         XCTAssertEqual(color.alpha, 0.1)
         
-        color = Color(153, 127, 102, alpha: 0.3)
+        color = Pigment(153, 127, 102, alpha: 0.3)
         XCTAssertEqual(color.red, 0.6, accuracy: 0.001)
         XCTAssertEqual(color.green, 0.498, accuracy: 0.001)
         XCTAssertEqual(color.blue, 0.4, accuracy: 0.001)
@@ -128,25 +117,25 @@ final class ColorTests: XCTestCase {
     }
     
     func testHexInitializers() {
-        var color = Color(hex3: 0xc3e)
+        var color = Pigment(hex3: 0xc3e)
         XCTAssertEqual(color.red, 0.8, accuracy: 0.001)
         XCTAssertEqual(color.green, 0.2, accuracy: 0.001)
         XCTAssertEqual(color.blue, 0.933, accuracy: 0.001)
         XCTAssertEqual(color.alpha, 1.0)
         
-        color = Color(hex4: 0xc3ef)
+        color = Pigment(hex4: 0xc3ef)
         XCTAssertEqual(color.red, 0.8, accuracy: 0.001)
         XCTAssertEqual(color.green, 0.2, accuracy: 0.001)
         XCTAssertEqual(color.blue, 0.933, accuracy: 0.001)
         XCTAssertEqual(color.alpha, 1.0)
         
-        color = Color(hex6: 0xcc33ee)
+        color = Pigment(hex6: 0xcc33ee)
         XCTAssertEqual(color.red, 0.8, accuracy: 0.001)
         XCTAssertEqual(color.green, 0.2, accuracy: 0.001)
         XCTAssertEqual(color.blue, 0.933, accuracy: 0.001)
         XCTAssertEqual(color.alpha, 1.0)
         
-        color = Color(hex8: 0xcc33eeff)
+        color = Pigment(hex8: 0xcc33eeff)
         XCTAssertEqual(color.red, 0.8, accuracy: 0.001)
         XCTAssertEqual(color.green, 0.2, accuracy: 0.001)
         XCTAssertEqual(color.blue, 0.933, accuracy: 0.001)
@@ -154,37 +143,37 @@ final class ColorTests: XCTestCase {
     }
     
     func testStringInitializers() {
-        var color = Color("darkkhaki")
+        var color = Pigment("darkkhaki")
         XCTAssertEqual(color.red, 0.741, accuracy: 0.001)
         XCTAssertEqual(color.green, 0.718, accuracy: 0.001)
         XCTAssertEqual(color.blue, 0.419, accuracy: 0.001)
         XCTAssertEqual(color.alpha, 1.0)
         
-        color = Color("#BDB76B")
+        color = Pigment("#BDB76B")
         XCTAssertEqual(color.red, 0.741, accuracy: 0.001)
         XCTAssertEqual(color.green, 0.718, accuracy: 0.001)
         XCTAssertEqual(color.blue, 0.419, accuracy: 0.001)
         XCTAssertEqual(color.alpha, 1.0)
         
-        color = Color("BDB76B")
+        color = Pigment("BDB76B")
         XCTAssertEqual(color.red, 0.741, accuracy: 0.001)
         XCTAssertEqual(color.green, 0.718, accuracy: 0.001)
         XCTAssertEqual(color.blue, 0.419, accuracy: 0.001)
         XCTAssertEqual(color.alpha, 1.0)
         
-        color = Color("YELLOW")
+        color = Pigment("YELLOW")
         XCTAssertEqual(color.red, 1.0, accuracy: 0.001)
         XCTAssertEqual(color.green, 1.0, accuracy: 0.001)
         XCTAssertEqual(color.blue, 0.0, accuracy: 0.001)
         XCTAssertEqual(color.alpha, 1.0)
         
-        color = Color("#ff0")
+        color = Pigment("#ff0")
         XCTAssertEqual(color.red, 1.0, accuracy: 0.001)
         XCTAssertEqual(color.green, 1.0, accuracy: 0.001)
         XCTAssertEqual(color.blue, 0.0, accuracy: 0.001)
         XCTAssertEqual(color.alpha, 1.0)
         
-        color = Color("ff0")
+        color = Pigment("ff0")
         XCTAssertEqual(color.red, 1.0, accuracy: 0.001)
         XCTAssertEqual(color.green, 1.0, accuracy: 0.001)
         XCTAssertEqual(color.blue, 0.0, accuracy: 0.001)
@@ -193,25 +182,25 @@ final class ColorTests: XCTestCase {
     
     func testAppKitExtensions() {
         #if canImport(AppKit)
-        let blue = Color("blue")
+        let blue = Pigment("blue")
         let nsBlue = NSColor.blue
         XCTAssertEqual(blue.nsColor, nsBlue)
         
         let nsPurple = NSColor.purple
-        let purple = Color(nsPurple)
-        XCTAssertEqual(nsPurple.color, purple)
+        let purple = Pigment(nsPurple)
+        XCTAssertEqual(nsPurple.pigment, purple)
         #endif
     }
     
     func testUIKitExtensions() {
         #if canImport(UIKit)
-        let blue = Color("blue")
+        let blue = Pigment("blue")
         let uiBlue = UIColor.blue
         XCTAssertEqual(blue.uiColor, uiBlue)
         
         let uiPurple = UIColor.purple
-        let purple = Color(uiPurple)
-        XCTAssertEqual(uiPurple.color, purple)
+        let purple = Pigment(uiPurple)
+        XCTAssertEqual(uiPurple.pigment, purple)
         #endif
     }
 }

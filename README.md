@@ -4,7 +4,7 @@ A platform agnostic representation of Color.
 
 <p>
     <img src="https://github.com/richardpiazza/SwiftColor/workflows/Swift/badge.svg?branch=main" />
-    <img src="https://img.shields.io/badge/Swift-5.2-orange.svg" />
+    <img src="https://img.shields.io/badge/Swift-5.5-orange.svg" />
     <a href="https://twitter.com/richardpiazza">
         <img src="https://img.shields.io/badge/twitter-@richardpiazza-blue.svg?style=flat" alt="Twitter: @richardpiazza" />
     </a>
@@ -18,7 +18,7 @@ SwiftColor is distributed using the [Swift Package Manager](https://swift.org/pa
 let package = Package(
     ...
     dependencies: [
-        .package(url: "https://github.com/richardpiazza/SwiftColor.git", .upToNextMinor(from: "0.1.0"))
+        .package(url: "https://github.com/richardpiazza/SwiftColor.git", .upToNextMinor(from: "0.2.0"))
     ],
     ...
 )
