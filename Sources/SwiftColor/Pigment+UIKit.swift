@@ -2,7 +2,7 @@ import Foundation
 #if canImport(UIKit)
 import UIKit
 
-public extension Color {
+public extension Pigment {
     init(_ color: UIColor) {
         var redComponent: CGFloat = 1.0
         var greenComponent: CGFloat = 1.0
@@ -13,20 +13,21 @@ public extension Color {
             return
         }
         
-        red = Float(redComponent)
-        green = Float(greenComponent)
-        blue = Float(blueComponent)
-        alpha = Float(alphaComponent)
+        red = redComponent
+        green = greenComponent
+        blue = blueComponent
+        alpha = alphaComponent
     }
     
     var uiColor: UIColor {
-        return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
+        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }
 }
 
 public extension UIColor {
-    var color: Color {
-        return .init(self)
-    }
+    var pigment: Pigment { Pigment(self) }
+    
+    @available(*, deprecated, renamed: "pigment")
+    var color: Color { pigment }
 }
 #endif

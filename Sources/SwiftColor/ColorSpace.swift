@@ -1,5 +1,5 @@
 import Foundation
 
-public enum ColorSpace {
+public enum ColorSpace: Equatable {
     case rgba
 }
