@@ -18,7 +18,7 @@ SwiftColor is distributed using the [Swift Package Manager](https://swift.org/pa
 let package = Package(
     ...
     dependencies: [
-        .package(url: "https://github.com/richardpiazza/SwiftColor.git", .upToNextMinor(from: "0.2.0"))
+        .package(url: "https://github.com/richardpiazza/SwiftColor.git", .upToNextMajor(from: "0.2.0"))
     ],
     ...
 )
@@ -31,3 +31,16 @@ import SwiftColor
 ```
 
 ## Garbage _in_... Color _out_
+
+The primary **SwiftColor** storage type is called `Pigment`. It stores RGBa information about a specific color and has many convenience initializers.
+The goal is to be able to pass any sort of color-related value, and get a reasonable color out.
+
+ ```swift
+ // Different ways to initialize with 'Blue'
+ _ = Pigment(blue: 1.0)
+ _ = Pigment(blue: 255)
+ _ = Pigment("blue")
+ _ = Pigment("#0000FF")
+ _ = Pigment(0x00F)
+ _ = Pigment(0x0000FF)
+ ```
