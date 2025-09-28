@@ -1,5 +1,3 @@
-import Foundation
-
 @propertyWrapper
 public struct Clamping<Value: Comparable> {
     var value: Value
@@ -13,7 +11,7 @@ public struct Clamping<Value: Comparable> {
 
     public var wrappedValue: Value {
         get {
-            return value
+            value
         }
         set(newValue) {
             value = min(max(range.lowerBound, newValue), range.upperBound)

@@ -1,5 +1,3 @@
-import Foundation
-
-public enum ColorSpace: Equatable {
+public enum ColorSpace: Equatable, Sendable {
     case rgba
 }
