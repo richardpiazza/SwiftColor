@@ -9,9 +9,9 @@ public extension Pigment {
         blue = color.blueComponent
         alpha = color.alphaComponent
     }
-    
+
     var nsColor: NSColor {
-        return NSColor(red: red, green: green, blue: blue, alpha: alpha)
+        NSColor(red: red, green: green, blue: blue, alpha: alpha)
     }
 }
 

@@ -5,18 +5,18 @@
 ///
 /// 'Pure White' is represented by values all equal to **1.0**.
 public struct Pigment: Sendable {
-    
+
     public let colorSpace: ColorSpace = .rgba
     public let red: Double
     public let green: Double
     public let blue: Double
     public let alpha: Double
-    
+
     public init(
-        @Clamping(0...1) red: Double = 1.0,
-        @Clamping(0...1) green: Double = 1.0,
-        @Clamping(0...1) blue: Double = 1.0,
-        @Clamping(0...1) alpha: Double = 1.0
+        @Clamping(0 ... 1) red: Double = 1.0,
+        @Clamping(0 ... 1) green: Double = 1.0,
+        @Clamping(0 ... 1) blue: Double = 1.0,
+        @Clamping(0 ... 1) alpha: Double = 1.0
     ) {
         self.red = red
         self.green = green
@@ -27,7 +27,7 @@ public struct Pigment: Sendable {
 
 extension Pigment: CustomStringConvertible {
     public var description: String {
-        return String(format: "Pigment(red: %.4f, green: %.4f, blue: %.4f, alpha: %.2f)", red, green, blue, alpha)
+        String(format: "Pigment(red: %.4f, green: %.4f, blue: %.4f, alpha: %.2f)", red, green, blue, alpha)
     }
 }
 

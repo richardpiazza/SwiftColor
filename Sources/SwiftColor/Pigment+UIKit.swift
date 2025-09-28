@@ -8,7 +8,7 @@ public extension Pigment {
         var greenComponent: CGFloat = 1.0
         var blueComponent: CGFloat = 1.0
         var alphaComponent: CGFloat = 1.0
-        
+
         guard color.getRed(&redComponent, green: &greenComponent, blue: &blueComponent, alpha: &alphaComponent) else {
             // TODO: Fail Initializer? Default Colors?
             red = redComponent
@@ -17,15 +17,15 @@ public extension Pigment {
             alpha = alphaComponent
             return
         }
-        
+
         red = redComponent
         green = greenComponent
         blue = blueComponent
         alpha = alphaComponent
     }
-    
+
     var uiColor: UIColor {
-        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+        UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }
 }
 

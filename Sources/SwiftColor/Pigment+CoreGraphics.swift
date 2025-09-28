@@ -31,7 +31,7 @@ public extension CGColor {
             // Return the CG color equivalent of `UIColor.clear`.
             return CGColor(genericGrayGamma2_2Gray: 0.0, alpha: 0.0)
         }
-        
+
         return CGColor(srgbRed: color.red, green: color.green, blue: color.blue, alpha: color.alpha)
     }
 }

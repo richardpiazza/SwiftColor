@@ -13,7 +13,7 @@ public extension Pigment {
         self.blue = Double(blue)
         self.alpha = Double(alpha)
     }
-    
+
     /// Floating-Point (percent) Initializer
     ///
     /// - parameter green: A value in the range of 0.0 to 1.0 representing the **green** percent.
@@ -26,7 +26,7 @@ public extension Pigment {
         self.blue = Double(blue)
         self.alpha = Double(alpha)
     }
-    
+
     /// Floating-Point (percent) Initializer
     ///
     /// - parameter blue: A value in the range of 0.0 to 1.0 representing the **blue** percent.
@@ -39,7 +39,7 @@ public extension Pigment {
         self.blue = Double(blue)
         self.alpha = Double(alpha)
     }
-    
+
     /// Variadic Floating-Point Initializer
     ///
     /// All _values_ should be expressed in the range of 0.0 to 1.0.
@@ -49,21 +49,21 @@ public extension Pigment {
     ///                     *0.0*.
     init(_ values: Float..., alpha: Float) {
         if values.count > 0 {
-            red = Double(values[0].clamped(to: 0...1))
+            red = Double(values[0].clamped(to: 0 ... 1))
         } else {
             red = 0.0
         }
         if values.count > 1 {
-            green = Double(values[1].clamped(to: 0...1))
+            green = Double(values[1].clamped(to: 0 ... 1))
         } else {
             green = 0.0
         }
         if values.count > 2 {
-            blue = Double(values[2].clamped(to: 0...1))
+            blue = Double(values[2].clamped(to: 0 ... 1))
         } else {
             blue = 0.0
         }
-        self.alpha = Double(alpha.clamped(to: 0...1))
+        self.alpha = Double(alpha.clamped(to: 0 ... 1))
     }
 }
 

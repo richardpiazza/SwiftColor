@@ -9,7 +9,7 @@ public extension Pigment {
             self.alpha = alpha
             return
         }
-        
+
         if let _ = ExtendedKeyword(rawValue: value.lowercased()) {
             red = 1.0
             green = 1.0
@@ -17,12 +17,12 @@ public extension Pigment {
             self.alpha = alpha
             return
         }
-        
+
         var hex = value
         if hex.hasPrefix("#") {
             hex = String(hex.dropFirst())
         }
-        
+
         guard let hexValue = Int(hex, radix: 16) else {
             red = 1.0
             green = 1.0
@@ -30,7 +30,7 @@ public extension Pigment {
             self.alpha = alpha
             return
         }
-        
+
         switch hex.count {
         case 3:
             let values = Self.hex3(hex: hexValue)

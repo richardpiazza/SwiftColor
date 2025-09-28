@@ -11,14 +11,14 @@ let package = Package(
         .iOS(.v16),
         .tvOS(.v16),
         .watchOS(.v9),
-        .visionOS(.v1), //.v2 ~ iOS 18
+        .visionOS(.v1), // .v2 ~ iOS 18
     ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
             name: "SwiftColor",
             targets: [
-                "SwiftColor"
+                "SwiftColor",
             ]
         ),
     ],
@@ -37,7 +37,7 @@ let package = Package(
         .testTarget(
             name: "SwiftColorTests",
             dependencies: [
-                "SwiftColor"
+                "SwiftColor",
             ]
         ),
     ]
