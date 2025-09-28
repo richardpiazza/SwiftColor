@@ -171,6 +171,14 @@ final class ColorTests: XCTestCase {
         XCTAssertEqual(color.alpha, 1.0)
     }
 
+    func testNameInitializer() {
+        let color = Pigment(.orchid)
+        XCTAssertEqual(color.red, 0.8549, accuracy: 0.001)
+        XCTAssertEqual(color.green, 0.4392, accuracy: 0.001)
+        XCTAssertEqual(color.blue, 0.8392, accuracy: 0.001)
+        XCTAssertEqual(color.alpha, 1.0)
+    }
+
     func testAppKitExtensions() {
         #if canImport(AppKit)
         let blue = Pigment("blue")

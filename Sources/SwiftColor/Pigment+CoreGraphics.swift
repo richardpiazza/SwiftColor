@@ -3,6 +3,7 @@ import Foundation
 import CoreGraphics
 
 public extension Pigment {
+    /// Initialize a `Pigment` using an `CGColor`.
     init?(_ color: CGColor) {
         let components = color.components ?? []
         switch components.count {

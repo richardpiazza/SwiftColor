@@ -1,10 +1,13 @@
 import Foundation
 
 public extension Pigment {
-    /// Initializes Color with an `Int` in the expected format of **0x000**.
+    /// Initializes a `Pigment` with an `Int` in the expected format of **0x000**.
     ///
     /// Used as a short-hand. If the hex 0x123 is provided, it is interpreted as 0x112233.
-    init(hex3 hex: Int, @Clamping(0 ... 1) alpha: Double = 1.0) {
+    init(
+        hex3 hex: Int,
+        @Clamping(0 ... 1) alpha: Double = 1.0
+    ) {
         let values = Self.hex3(hex: hex, alpha: alpha)
         red = values.red
         green = values.green
@@ -14,7 +17,9 @@ public extension Pigment {
 
     /// Shorthand **0x0000** initializer similar to `init(hex3:alpha:)` where
     /// the last digit represent the alpha component.
-    init(hex4 hex: Int) {
+    init(
+        hex4 hex: Int
+    ) {
         let values = Self.hex4(hex: hex)
         red = values.red
         green = values.green
@@ -23,7 +28,10 @@ public extension Pigment {
     }
 
     /// Initializes with a standard format hex representation of color in the form of **0x1E2C3D**.
-    init(hex6 hex: Int, @Clamping(0 ... 1) alpha: Double = 1.0) {
+    init(
+        hex6 hex: Int,
+        @Clamping(0 ... 1) alpha: Double = 1.0
+    ) {
         let values = Self.hex6(hex: hex, alpha: alpha)
         red = values.red
         green = values.green
@@ -33,7 +41,9 @@ public extension Pigment {
 
     /// Extended form of `init(hex6:alpha:)` expecting **0x112233FF**, that uses the last
     /// bits for the alpha component.
-    init(hex8 hex: Int) {
+    init(
+        hex8 hex: Int
+    ) {
         let values = Self.hex8(hex: hex)
         red = values.red
         green = values.green
@@ -41,14 +51,17 @@ public extension Pigment {
         alpha = values.alpha
     }
 
-    /// Initializes with a `Int` representation of an RGB(a) Hex Value
+    /// Initializes a `Pigment` with an `Int` representation of an RGB(a) Hex Value
     ///
     /// This initializer will do its best to interpret the intentions of what is provided.
     /// **YOUR RESULTS WILL VARY**, and it's best to use one of the `init(hex?:)` initializers.
     ///
     /// - Parameter hex: Hex value
     /// - Parameter alpha: The opacity value of the color object
-    init(_ hex: Int, alpha: Double? = nil) {
+    init(
+        _ hex: Int,
+        alpha: Double? = nil
+    ) {
         if hex > 0xFFFFFF {
             let values = Self.hex8(hex: hex)
             red = values.red

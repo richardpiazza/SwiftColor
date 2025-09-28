@@ -10,7 +10,7 @@ public extension Pigment {
             return
         }
 
-        if let _ = ExtendedKeyword(rawValue: value.lowercased()) {
+        if ExtendedKeyword.allCases.contains(where: { $0.rawValue.caseInsensitiveCompare(value) == .orderedSame }) {
             red = 1.0
             green = 1.0
             blue = 1.0
@@ -66,7 +66,7 @@ public extension Pigment {
 }
 
 private extension Pigment {
-    enum ExtendedKeyword: String {
+    enum ExtendedKeyword: String, CaseIterable {
         case none
         case clear
         case transparent
