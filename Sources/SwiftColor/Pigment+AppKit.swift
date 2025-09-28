@@ -17,8 +17,5 @@ public extension Pigment {
 
 public extension NSColor {
     var pigment: Pigment { Pigment(self) }
-    
-    @available(*, deprecated, renamed: "pigment")
-    var color: Pigment { pigment }
 }
 #endif

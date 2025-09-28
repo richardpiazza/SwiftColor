@@ -24,12 +24,6 @@ public extension Pigment {
             break
         }
     }
-    
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
-    @available(*, deprecated, renamed: "CGColor.make(_:)")
-    var cgColor: CGColor {
-        return .make(self)
-    }
 }
 
 public extension CGColor {
@@ -41,11 +35,6 @@ public extension CGColor {
         }
         
         return CGColor(srgbRed: color.red, green: color.green, blue: color.blue, alpha: color.alpha)
-    }
-    
-    @available(*, deprecated, message: "Use Color() initializer.")
-    var color: Color {
-        return .init(self)
     }
 }
 #endif

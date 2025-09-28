@@ -150,9 +150,6 @@ public extension Pigment {
         case yellow = "yellow"
         case yellowGreen = "yellowgreen"
         
-        @available(*, deprecated, renamed: "pigment")
-        public var color: Pigment { pigment }
-        
         public var pigment: Pigment {
             switch self {
             case .aliceBlue: return Pigment(240, 248, 255)

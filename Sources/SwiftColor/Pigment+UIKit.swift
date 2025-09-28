@@ -26,8 +26,5 @@ public extension Pigment {
 
 public extension UIColor {
     var pigment: Pigment { Pigment(self) }
-    
-    @available(*, deprecated, renamed: "pigment")
-    var color: Color { pigment }
 }
 #endif

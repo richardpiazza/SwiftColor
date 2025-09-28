@@ -1,8 +1,5 @@
 import Foundation
 
-@available(*, deprecated, renamed: "Pigment", message: "Avoiding namespace collisions with SwiftUI.Color.")
-public typealias Color = Pigment
-
 /// A platform agnostic representation of Color
 ///
 /// The components - red, green, blue, & alpha - are maintained as a floating-point representation.
