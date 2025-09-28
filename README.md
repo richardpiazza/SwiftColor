@@ -2,33 +2,8 @@
 
 A platform agnostic representation of Color.
 
-<p>
-    <img src="https://github.com/richardpiazza/SwiftColor/workflows/Swift/badge.svg?branch=main" />
-    <img src="https://img.shields.io/badge/Swift-5.5-orange.svg" />
-    <a href="https://twitter.com/richardpiazza">
-        <img src="https://img.shields.io/badge/twitter-@richardpiazza-blue.svg?style=flat" alt="Twitter: @richardpiazza" />
-    </a>
-</p>
-
-## Usage
-
-SwiftColor is distributed using the [Swift Package Manager](https://swift.org/package-manager). To install it into a project, add it as a dependency within your `Package.swift` manifest:
-
-```swift
-let package = Package(
-    ...
-    dependencies: [
-        .package(url: "https://github.com/richardpiazza/SwiftColor.git", .upToNextMajor(from: "0.2.0"))
-    ],
-    ...
-)
-```
-
-Then import the **SwiftColor** packages wherever you'd like to use it:
-
-```swift
-import SwiftColor
-```
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Frichardpiazza%2FSwiftColor%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/richardpiazza/SwiftColor)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Frichardpiazza%2FSwiftColor%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/richardpiazza/SwiftColor)
 
 ## Garbage _in_... Color _out_
 
@@ -44,3 +19,23 @@ The goal is to be able to pass any sort of color-related value, and get a reason
  _ = Pigment(0x00F)
  _ = Pigment(0x0000FF)
  ```
+
+## Usage
+
+SwiftColor is distributed using the [Swift Package Manager](https://swift.org/package-manager). To install it into a project, add it as a dependency within your `Package.swift` manifest:
+
+```swift
+let package = Package(
+    ...
+    dependencies: [
+        .package(url: "https://github.com/richardpiazza/SwiftColor.git", from: "0.3.0")
+    ],
+    ...
+)
+```
+
+Then import the **SwiftColor** packages wherever you'd like to use it:
+
+```swift
+import SwiftColor
+```
