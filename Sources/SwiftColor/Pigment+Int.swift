@@ -46,7 +46,7 @@ public extension Pigment {
     ///
     /// - parameter values: A number of `Int` which are mapped to **red**, **green**, **blue** in that order.
     /// - parameter alpha: A value in the range of 0.0 to 1.0 representing the **alpha/opacity/transparency** percent.
-    init(_ values: Int..., alpha: Double = 1.0) {
+    init(_ values: Int..., @Clamping(0...1) alpha: Double) {
         if values.count > 0 {
             red = Double(values[0]) / 255.0
         } else {

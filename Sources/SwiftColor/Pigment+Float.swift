@@ -47,26 +47,28 @@ public extension Pigment {
     /// - parameter values: A number of `Float` which are mapped to **red**, **green**, **blue**, **alpha** in that order.
     ///                     If an _alpha_ value is not supplied, the value will default to **1.0**; All other components will default to
     ///                     *0.0*.
-    init(_ values: Float...) {
+    init(_ values: Float..., alpha: Float) {
         if values.count > 0 {
-            red = Double(values[0])
+            red = Double(values[0].clamped(to: 0...1))
         } else {
             red = 0.0
         }
         if values.count > 1 {
-            green = Double(values[1])
+            green = Double(values[1].clamped(to: 0...1))
         } else {
             green = 0.0
         }
         if values.count > 2 {
-            blue = Double(values[2])
+            blue = Double(values[2].clamped(to: 0...1))
         } else {
             blue = 0.0
         }
-        if values.count > 3 {
-            alpha = Double(values[3])
-        } else {
-            alpha = 1.0
-        }
+        self.alpha = Double(alpha.clamped(to: 0...1))
+    }
+}
+
+extension Float {
+    func clamped(to range: ClosedRange<Float>) -> Float {
+        min(max(range.lowerBound, self), range.upperBound)
     }
 }

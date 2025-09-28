@@ -2,7 +2,7 @@ import Foundation
 
 public extension Pigment {
     init(_ value: String, alpha: Double = 1.0) {
-        if let keyword = Keyword(rawValue: value.lowercased()) {
+        if let keyword = Name.allCases.first(where: { $0.rawValue.caseInsensitiveCompare(value) == .orderedSame }) {
             red = keyword.pigment.red
             green = keyword.pigment.green
             blue = keyword.pigment.blue

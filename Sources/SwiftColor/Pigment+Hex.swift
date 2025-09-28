@@ -5,36 +5,40 @@ public extension Pigment {
     ///
     /// Used as a short-hand. If the hex 0x123 is provided, it is interpreted as 0x112233.
     init(hex3 hex: Int, @Clamping(0...1) alpha: Double = 1.0) {
-        red = Double(Self.duplicateBits((hex & 0xF00) >> 8)) / 255.0
-        green = Double(Self.duplicateBits((hex & 0x0F0) >> 4)) / 255.0
-        blue = Double(Self.duplicateBits((hex & 0x00F) >> 0)) / 255.0
-        self.alpha = alpha
+        let values = Self.hex3(hex: hex, alpha: alpha)
+        red = values.red
+        green = values.green
+        blue = values.blue
+        self.alpha = values.alpha
     }
     
     /// Shorthand **0x0000** initializer similar to `init(hex3:alpha:)` where
     /// the last digit represent the alpha component.
     init(hex4 hex: Int) {
-        red = Double(Self.duplicateBits((hex & 0xF000) >> 12)) / 255.0
-        green = Double(Self.duplicateBits((hex & 0x0F00) >> 8)) / 255.0
-        blue = Double(Self.duplicateBits((hex & 0x00F0) >> 4)) / 255.0
-        alpha = Double(Self.duplicateBits((hex & 0x00F0) >> 0)) / 255.0
+        let values = Self.hex4(hex: hex)
+        red = values.red
+        green = values.green
+        blue = values.blue
+        alpha = values.alpha
     }
     
     /// Initializes with a standard format hex representation of color in the form of **0x1E2C3D**.
     init(hex6 hex: Int, @Clamping(0...1) alpha: Double = 1.0) {
-        red = Double((hex & 0xFF0000) >> 16) / 255.0
-        green = Double((hex & 0x00FF00) >> 8) / 255.0
-        blue = Double((hex & 0x0000FF) >> 0) / 255.0
-        self.alpha = alpha
+        let values = Self.hex6(hex: hex, alpha: alpha)
+        red = values.red
+        green = values.green
+        blue = values.blue
+        self.alpha = values.alpha
     }
     
     /// Extended form of `init(hex6:alpha:)` expecting **0x112233FF**, that uses the last
     /// bits for the alpha component.
     init(hex8 hex: Int) {
-        red = Double((hex & 0xFF000000) >> 24) / 255.0
-        green = Double((hex & 0x00FF0000) >> 16) / 255.0
-        blue = Double((hex & 0x0000FF00) >> 8) / 255.0
-        alpha = Double((hex & 0x000000FF) >> 0) / 255.0
+        let values = Self.hex8(hex: hex)
+        red = values.red
+        green = values.green
+        blue = values.blue
+        alpha = values.alpha
     }
     
     /// Initializes with a `Int` representation of an RGB(a) Hex Value
@@ -90,7 +94,7 @@ extension Pigment {
         let red = Double(duplicateBits((hex & 0xF000) >> 12)) / 255.0
         let green = Double(duplicateBits((hex & 0x0F00) >> 8)) / 255.0
         let blue = Double(duplicateBits((hex & 0x00F0) >> 4)) / 255.0
-        let alpha = Double(duplicateBits((hex & 0x00F0) >> 0)) / 255.0
+        let alpha = Double(duplicateBits((hex & 0x000F) >> 0)) / 255.0
         return (red, green, blue, alpha)
     }
     

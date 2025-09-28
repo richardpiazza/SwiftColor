@@ -10,6 +10,11 @@ public extension Pigment {
         var alphaComponent: CGFloat = 1.0
         
         guard color.getRed(&redComponent, green: &greenComponent, blue: &blueComponent, alpha: &alphaComponent) else {
+            // TODO: Fail Initializer? Default Colors?
+            red = redComponent
+            green = greenComponent
+            blue = blueComponent
+            alpha = alphaComponent
             return
         }
         

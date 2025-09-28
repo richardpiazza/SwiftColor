@@ -3,7 +3,7 @@ import Foundation
 import CoreGraphics
 
 public extension Pigment {
-    init(_ color: CGColor) {
+    init?(_ color: CGColor) {
         let components = color.components ?? []
         switch components.count {
         case 2:
@@ -20,17 +20,12 @@ public extension Pigment {
             blue = components[2]
             alpha = components[3]
         default:
-            print("Unhandled CGColor: \(color)")
-            red = 1.0
-            green = 1.0
-            blue = 1.0
-            alpha = 1.0
+            return nil
         }
     }
 }
 
 public extension CGColor {
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
     static func make(_ color: Pigment) -> CGColor {
         if color.red == 0.0, color.green == 0.0, color.blue == 0.0, color.alpha == 0.0 {
             // Return the CG color equivalent of `UIColor.clear`.
