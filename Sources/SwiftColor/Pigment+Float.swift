@@ -65,6 +65,8 @@ public extension Pigment {
         }
         if values.count > 3 {
             alpha = Double(values[3])
+        } else {
+            alpha = 1.0
         }
     }
 }
