@@ -30,6 +30,8 @@ public extension Pigment {
 }
 
 public extension UIColor {
-    var pigment: Pigment { Pigment(self) }
+    var pigment: Pigment {
+        Pigment(self)
+    }
 }
 #endif

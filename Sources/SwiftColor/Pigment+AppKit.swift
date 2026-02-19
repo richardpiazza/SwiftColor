@@ -17,6 +17,8 @@ public extension Pigment {
 }
 
 public extension NSColor {
-    var pigment: Pigment { Pigment(self) }
+    var pigment: Pigment {
+        Pigment(self)
+    }
 }
 #endif
