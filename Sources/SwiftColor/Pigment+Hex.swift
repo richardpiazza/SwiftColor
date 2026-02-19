@@ -39,6 +39,7 @@ public extension Pigment {
         self.alpha = values.alpha
     }
 
+    #if !os(watchOS)
     /// Extended form of `init(hex6:alpha:)` expecting **0x112233FF**, that uses the last
     /// bits for the alpha component.
     init(
@@ -50,6 +51,7 @@ public extension Pigment {
         blue = values.blue
         alpha = values.alpha
     }
+    #endif
 
     /// Initializes a `Pigment` with an `Int` representation of an RGB(a) Hex Value
     ///
@@ -62,13 +64,17 @@ public extension Pigment {
         _ hex: Int,
         alpha: Double? = nil
     ) {
+        #if !os(watchOS)
         if hex > 0xFFFFFF {
             let values = Self.hex8(hex: hex)
             red = values.red
             green = values.green
             blue = values.blue
             self.alpha = values.alpha
-        } else if hex > 0xFFFF {
+            return
+        }
+        #endif
+        if hex > 0xFFFF {
             let values = Self.hex6(hex: hex, alpha: alpha ?? 1.0)
             red = values.red
             green = values.green
@@ -121,6 +127,7 @@ extension Pigment {
         return (red, green, blue, alpha)
     }
 
+    #if !os(watchOS)
     static func hex8(
         hex: Int
     ) -> (red: Double, green: Double, blue: Double, alpha: Double) {
@@ -130,6 +137,7 @@ extension Pigment {
         let alpha = Double((hex & 0x0000_00FF) >> 0) / 255.0
         return (red, green, blue, alpha)
     }
+    #endif
 
     static func duplicateBits(_ value: Int) -> Int {
         (value << 4) + value

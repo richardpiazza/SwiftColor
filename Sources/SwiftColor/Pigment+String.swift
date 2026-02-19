@@ -50,12 +50,14 @@ public extension Pigment {
             green = values.green
             blue = values.blue
             self.alpha = values.alpha
+        #if !os(watchOS)
         case 8:
             let values = Self.hex8(hex: hexValue)
             red = values.red
             green = values.green
             blue = values.blue
             self.alpha = values.alpha
+        #endif
         default:
             red = 1.0
             green = 1.0
